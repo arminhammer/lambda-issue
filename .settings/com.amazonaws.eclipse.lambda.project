@@ -1,0 +1,5 @@
+#Lambda Function Project Metadata
+#Sun May 29 18:26:30 CEST 2016
+lastDeploymentFunctionName=lambda-java-example
+lastDeploymentBucketName=elb-eu-west-1
+lastDeploymentEndpoint=https\://lambda.eu-west-1.amazonaws.com/

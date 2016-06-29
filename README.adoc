@@ -1,0 +1,31 @@
+
+== Build the java function
+
+* First compile file `hello32.cpp`:
+
+```
+sudo apt update
+sudo apt-get install lib32z1 lib32ncurses5
+sudo apt-get install gcc-multilib g++-multilib
+g++ -m32 -static hello32.cpp -o hello32
+```
+
+* The resulting `hello32` program must be copied to `src/main/resources/`
+
+* Create the whole jar:
+
+```
+mvn clean package shade:shade
+```
+
+* Create a Lambda function for the jar, which is located at `target/lambda-issue-0.0.1-SNAPSHOT.jar`, give it the following properties:
+
+```
+- `Runtime`: `Java 8`
+- `Handler`: `lambda.Main::handleRequest`
+- `Role`: `lambda_basic_execution`
+- `Memory` :  `1536`
+- `Timeout`: `0 min 15 sec`
+```
+
+* Launch the lambda function with any parameters you want (not taken into account)
